@@ -2,6 +2,7 @@ import 'package:breakingbad_quotes/quote.dart';
 import 'package:flutter/material.dart';
 import 'dart:convert' as convert;
 import 'package:http/http.dart' as http;
+import 'package:share/share.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -92,6 +93,55 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 15.0,
                         ),
                         textAlign: TextAlign.left,
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(30.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            FlatButton(
+                              onPressed: () {
+                                print('Sharing..');
+                                setState(() {});
+                              },
+                              child: Row(
+                                children: [
+                                  Text(
+                                    'More..',
+                                    style: TextStyle(color: Colors.white70),
+                                  )
+                                ],
+                              ),
+                            ),
+                            FlatButton(
+                              onPressed: () {
+                                print('Sharing..');
+                                final RenderBox box =
+                                    context.findRenderObject();
+                                Share.share(snapshot.data.quote,
+                                    subject: 'Breaking Bad Quote',
+                                    sharePositionOrigin:
+                                        box.localToGlobal(Offset.zero) &
+                                            box.size);
+                              },
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    Icons.share_outlined,
+                                    color: Colors.blueAccent,
+                                  ),
+                                  Text(
+                                    'Share',
+                                    style: TextStyle(color: Colors.white70),
+                                  )
+                                ],
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ]);
               } else {
