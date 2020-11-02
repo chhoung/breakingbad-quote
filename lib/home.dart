@@ -23,7 +23,19 @@ String getGifs(String charac) {
       return "gifs/jessepinkman.gif";
       break;
     case 'Saul Goodman':
-      return "gifs/jessepinkman2.gif";
+      return "gifs/saulgoodman.gif";
+      break;
+    case 'Mike Ehrmantraut':
+      return "gifs/mike.gif";
+      break;
+    case 'Hank Schrader':
+      return 'gifs/hank.gif';
+      break;
+    case 'Skyler White':
+      return 'gifs/skyler.gif';
+      break;
+    case 'Gustavo Fring':
+      return 'gifs/gus.gif';
       break;
     default:
       return "gifs/jessepinkman2.gif";
@@ -65,6 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
               if (snapshot.data != null) {
                 return Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Image(
                         image: AssetImage(getGifs(snapshot.data.author)),
@@ -72,7 +85,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       SizedBox(
                         height: 20.0,
                       ),
-                      Text(snapshot.data.quote),
+                      Text(
+                        snapshot.data.quote,
+                        style: TextStyle(
+                          color: Colors.orange,
+                          fontSize: 15.0,
+                        ),
+                        textAlign: TextAlign.left,
+                      ),
                     ]);
               } else {
                 return Text('Loading quote..');
