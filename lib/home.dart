@@ -109,6 +109,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               },
                               child: Row(
                                 children: [
+                                  Image.asset(
+                                    'gifs/brea.png',
+                                    color: null,
+                                    scale: 10,
+                                  ),
+                                  SizedBox(
+                                    width: 5,
+                                  ),
                                   Text(
                                     'More..',
                                     style: TextStyle(color: Colors.white70),
